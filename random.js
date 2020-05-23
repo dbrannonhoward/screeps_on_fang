@@ -13,10 +13,11 @@ var random = {
         return random_role;
     },
     
-    value_zero_or_one: function() {
-        zero_or_one = Math.floor(Math.random() * 1.9999);
-        return zero_or_one;
-    }
+    value_zero_to: function(number) {
+        number += 0.9999
+        random_value = Math.floor(Math.random() * number);
+        return random_value;
+    },
 };
 
 module.exports = random;

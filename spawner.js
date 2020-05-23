@@ -20,21 +20,24 @@ var spawner = {
     },
     
     spawn_creep_by_role: function(creep_role) {
-        if (query.get_energy_of_spawn() > CONSTANT.ENERGY_TO_SPAWN_CREEP()) {
+        if (query.get_energy_of_spawn_by_name('home') > CONSTANT.ENERGY_TO_SPAWN_CREEP()) {
             Game.spawns[CONSTANT.MAIN_SPAWN()].spawnCreep(CONSTANT.DEFAULT_BODY(), this.generate_unique_name(), {memory: {role: 'upgrader'}});
         }
     },
     
-    spawn_default_creeps: function() {
-        if (query.get_energy_of_spawn() > CONSTANT.ENERGY_TO_SPAWN_CREEP() && query.get_count_of_all_creeps() < CONSTANT.CREEP_LIMIT()) {
+    spawn_creeps_default: function() {
+        if (query.get_energy_of_spawn_by_name('home') > CONSTANT.ENERGY_TO_SPAWN_CREEP() && query.get_count_of_all_creeps() < CONSTANT.CREEP_LIMIT()) {
+            logger.log_to_console('Spawning a creep with default arguments')
             this.spawn_creep(CONSTANT.DEFAULT_SPAWN(), CONSTANT.DEFAULT_BODY(), CONSTANT.DEFAULT_MEMORY());
         }
     },
     
-    spawn_random_creeps: function() {
-        //if (query.get_energy_of_spawn() > CONSTANT.ENERGY_TO_SPAWN_CREEP() && query.get_count_of_all_creeps() < CONSTANT.CREEP_LIMIT()) {
+    spawn_creeps_random: function() {
+        if (query.get_energy_of_spawn_by_name('home') > CONSTANT.ENERGY_TO_SPAWN_CREEP() && query.get_count_of_all_creeps() < CONSTANT.CREEP_LIMIT()) {
             var random_role = random.get_random_role_from_all_roles();
-            this.spawn_creep(CONSTANT.DEFAULT_SPAWN(), CONSTANT.DEFAULT_BODY(), CONSTANT.ALL_ROLES());
+            logger.log_to_console('Spawning a random creep of role : ' + random_role);
+            this.spawn_creep(CONSTANT.DEFAULT_SPAWN(), CONSTANT.DEFAULT_BODY(), {role: random_role});
+        }
     },
     
 };

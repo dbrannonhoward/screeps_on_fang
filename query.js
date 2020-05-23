@@ -3,21 +3,25 @@ var logger = require('logger');
 
 var query = {
     
-    get_all_keys_from_hash: function(some_hash) {
+    get_hash_keys: function(some_hash) {
         var keys = _.keys(some_hash);
         return keys;
     },
     
-    get_all_vals_from_hash: function(some_hash) {
+    get_hash_vals: function(some_hash) {
         var vals = _.values(some_hash);
         return vals;
     },
     
-    get_count_of_all_roles: function(all_creeps) {
-        var roles = CONSTANT.ALL_ROLES();
-        var role_count = {}
-        for (role in roles) {
+    get_count_of_role: function(role_to_count) {
+        var role_count = 0;
+        for (creep in Game.creeps) {
+            creep_role = Game.creeps[creep].memory.role;
+            if (creep_role == role_to_count) {
+                role_count += 1;
+            }
         }
+        return role_count;
     },
     
     get_count_of_all_creeps: function() {
@@ -39,26 +43,10 @@ var query = {
         return num_of_creeps;
     },
     
-    get_energy_of_spawn: function() {
-        //var spawn_energy = Game.spawns[CONSTANT.MAIN_SPAWN()].store.getFreeCapacity();
-        var spawn_energy = Game.spawns['home'].store.getUsedCapacity(RESOURCE_ENERGY);
+    get_energy_of_spawn_by_name: function(spawn_name) {
+        var spawn_energy = Game.spawns[spawn_name].store.getUsedCapacity(RESOURCE_ENERGY);
         return spawn_energy;
     },
-    
-    get_memory_from_creep__role: function(all_creeps, creep_key) {
-        var some_creep = all_creeps[creep_key];
-        if (loop_count % CONSTANTS.REPORT_DELAY == 0) {
-            var creep_memory = some_creep.memory.role
-            return creep_memory;
-        }
-    },
-    
-    get_population_data: function(loop_count) {
-        if (loop_count % CONSTANTS.REPORT_DELAY == 0) {
-            var population_all = Object.keys(Game.creeps).length
-            console.log(' pop_all : ' + population_all);
-        }
-    }
 };
 
 module.exports = query;

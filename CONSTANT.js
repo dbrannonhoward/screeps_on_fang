@@ -6,7 +6,7 @@ var CONSTANT = {
     },
     
     CREEP_LIMIT: function() {
-        const CREEP_LIMIT = 1;
+        const CREEP_LIMIT = 3;
         return CREEP_LIMIT;
     },
     
@@ -36,7 +36,7 @@ var CONSTANT = {
     },
     
     LOG_PERIOD: function() {
-        const LOG_PERIOD = 15;
+        const LOG_PERIOD = 100;
         return LOG_PERIOD;
     },
     
