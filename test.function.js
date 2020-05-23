@@ -1,7 +1,11 @@
+var all_creeps = Game.creeps
+
 var test_function = {
     
     run: function() {
-        console.log('hello world');
+        keys = Object.keys(all_creeps);
+        values = keys.map(function(val) { return all_creeps[val]; });
+        console.log(keys + values);
     }
 };
 

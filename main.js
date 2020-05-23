@@ -1,4 +1,4 @@
-var testFunction = require('test.function')
+var query_data = require('query.data');
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
@@ -8,9 +8,12 @@ loop_count = 0;
 
 module.exports.loop = function () {
     
-    testFunction.run();
-    
     report_population_to_console.run(loop_count);
+    creep_hash = Game.creeps
+    creep_keys = query_data.get_all_keys_from_hash(creep_hash);
+    creep_vals = query_data.get_all_vals_from_hash(creep_hash);
+    console.log(creep_keys)
+    console.log(creep_vals)
 
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
