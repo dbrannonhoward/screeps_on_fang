@@ -1,5 +1,6 @@
 var logger = require('logger');
 var random = require('random');
+var role = require('role');
 var roleBuilder = require('role.builder');
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
@@ -10,18 +11,20 @@ loop_count = 0;
 
 module.exports.loop = function () {
 
-    spawner.spawn_creep_by_role('upgrader');
+    logger.log_to_console(query.get_count_of_all_creeps());
+    
+    spawner.spawn_default_creeps();
     
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
         if(creep.memory.role == 'harvester') {
-            roleHarvester.run(creep);
+            role.harvest(creep);
         }
         if(creep.memory.role == 'upgrader') {
-            roleUpgrader.run(creep);
+            role.upgrade(creep);
         }
         if(creep.memory.role == 'builder') {
-            roleBuilder.run(creep);
+            role.build(creep);
         }
     }
     loop_count += 1;

@@ -14,20 +14,29 @@ var query = {
     },
     
     get_count_of_all_roles: function(all_creeps) {
-        var roles = CONSTANT.ALL_AVAILABLE_ROLES();
+        var roles = CONSTANT.ALL_ROLES();
+        var role_count = {}
         for (role in roles) {
-            
         }
     },
     
-    get_count_of_role: function(all_creeps, some_role) {
-        var num_of_creeps = 0
+    get_count_of_all_creeps: function() {
+        var num_of_creeps = 0;
+        for (key in Game.creeps) {
+            num_of_creeps += 1;
+        }
+        return num_of_creeps;
+    },
+    
+    get_count_of_creeps_with_role: function(some_role) {
+        var num_of_creeps = 0;
+        var all_creeps = Game.creeps;
         for (key in all_creeps) {
             if (all_creeps[key].memory.role == some_role) {
-                num_of_creeps += 1
+                num_of_creeps += 1;
             }
         }  
-    return num_of_creeps
+        return num_of_creeps;
     },
     
     get_energy_of_spawn: function() {
