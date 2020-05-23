@@ -1,7 +1,7 @@
 var CONSTANT = require('CONSTANT');
 var logger = require('logger');
-var random = require('random');
 var query = require('query');
+var random = require('random');
 
 var spawner = {
     

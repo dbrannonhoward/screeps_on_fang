@@ -1,7 +1,7 @@
 var logger = require('logger');
 var random = require('random');
-var role = require('role');
 var query = require('query');
+var role = require('role');
 var spawner = require('spawner');
 
 loop_count = 0;
