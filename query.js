@@ -4,7 +4,6 @@ var logger = require('log.data');
 var query = {
     
     get_all_keys_from_hash: function(some_hash) {
-        //console.log('DEBUG : get_all_keys_from_hash');
         var keys = _.keys(some_hash);
         return keys;
     },
@@ -29,6 +28,12 @@ var query = {
             }
         }  
     return num_of_creeps
+    },
+    
+    get_energy_of_spawn: function() {
+        //var spawn_energy = Game.spawns[CONSTANT.MAIN_SPAWN()].store.getFreeCapacity();
+        var spawn_energy = Game.spawns['home'].store.getUsedCapacity(RESOURCE_ENERGY);
+        return spawn_energy;
     },
     
     get_memory_from_creep__role: function(all_creeps, creep_key) {

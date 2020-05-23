@@ -1,6 +1,6 @@
 var CONSTANT = {
     
-    ALL_AVAILABLE_ROLES: function() {
+    ALL_ROLES: function() {
         const ROLES = ['builder', 'harvester', 'upgrader'];
         return ROLES;
     },
