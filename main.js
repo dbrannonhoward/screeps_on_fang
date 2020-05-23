@@ -1,19 +1,25 @@
-var query_data = require('query.data');
+var logger = require('log.data');
+var roleBuilder = require('role.builder');
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
-var roleBuilder = require('role.builder');
-var report_population_to_console = require('population.report_to_console');
+var query_data = require('query.data');
 
 loop_count = 0;
 
 module.exports.loop = function () {
-    
-    report_population_to_console.run(loop_count);
     creep_hash = Game.creeps
-    creep_keys = query_data.get_all_keys_from_hash(creep_hash);
-    creep_vals = query_data.get_all_vals_from_hash(creep_hash);
-    console.log(creep_keys)
-    console.log(creep_vals)
+    query_data.get_population_data(loop_count);
+    creep_keys = query_data.get_all_keys_from_hash(creep_hash, loop_count);
+    creep_vals = query_data.get_all_vals_from_hash(creep_hash, loop_count);
+    if (typeof creep_keys != 'undefined') {
+        logger.log_to_console('creep keys : ' + creep_keys + ', creep vals : ' + creep_vals);
+    }
+    for (key in creep_hash) {
+        creep_memory = query_data.get_memory_from_creep__role(creep_hash, key);
+        if (typeof creep_memory != "undefined") {
+            logger.log_to_console(creep_memory);   
+        }
+    }
 
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
