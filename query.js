@@ -56,7 +56,6 @@ var query = {
     get_population_data: function(loop_count) {
         if (loop_count % CONSTANTS.REPORT_DELAY == 0) {
             var population_all = Object.keys(Game.creeps).length
-            console.log(' + + + POPULATION REPORT AT REPORT_DELAY ' + CONSTANTS.REPORT_DELAY + ' + + + ');
             console.log(' pop_all : ' + population_all);
         }
     }
