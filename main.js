@@ -1,26 +1,23 @@
-var logger = require('log.data');
+var logger = require('logger');
+var random = require('random');
 var roleBuilder = require('role.builder');
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
-var query_data = require('query.data');
+var query = require('query');
+var spawner = require('spawner');
 
 loop_count = 0;
 
 module.exports.loop = function () {
-    creep_hash = Game.creeps
-    query_data.get_population_data(loop_count);
-    creep_keys = query_data.get_all_keys_from_hash(creep_hash, loop_count);
-    creep_vals = query_data.get_all_vals_from_hash(creep_hash, loop_count);
-    if (typeof creep_keys != 'undefined') {
-        logger.log_to_console('creep keys : ' + creep_keys + ', creep vals : ' + creep_vals);
-    }
-    for (key in creep_hash) {
-        creep_memory = query_data.get_memory_from_creep__role(creep_hash, key);
-        if (typeof creep_memory != "undefined") {
-            logger.log_to_console(creep_memory);   
-        }
-    }
-
+    
+    spawner.spawn_creep_by_role('upgrader');
+    
+    creep_keys = query.get_all_keys_from_hash(Game.creeps, loop_count);
+    creep_vals = query.get_all_vals_from_hash(Game.creeps, loop_count);
+    
+    log_string = 'creep keys : ' + creep_keys + ', creep vals : ' + creep_vals
+    logger.log_to_console(log_string, loop_count);
+    
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
         if(creep.memory.role == 'harvester') {

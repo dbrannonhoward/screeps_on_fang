@@ -1,3 +1,5 @@
+var random = require('random');
+
 var roleBuilder = {
 
     /** @param {Creep} creep **/
