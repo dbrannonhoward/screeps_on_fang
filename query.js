@@ -1,5 +1,5 @@
 var CONSTANT = require('CONSTANT');
-var logger = require('log.data');
+var logger = require('logger');
 
 var query = {
     

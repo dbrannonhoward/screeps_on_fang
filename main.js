@@ -1,9 +1,6 @@
 var logger = require('logger');
 var random = require('random');
 var role = require('role');
-var roleBuilder = require('role.builder');
-var roleHarvester = require('role.harvester');
-var roleUpgrader = require('role.upgrader');
 var query = require('query');
 var spawner = require('spawner');
 
