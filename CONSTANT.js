@@ -25,9 +25,9 @@ var CONSTANT = {
         return NAME_LENGTH;
     },
     
-    REPORT_DELAY: function() {
-        const REPORT_DELAY = 50;
-        return REPORT_DELAY;
+    LOG_PERIOD: function() {
+        const LOG_PERIOD = 50;
+        return LOG_PERIOD;
     }
 };
 
