@@ -35,6 +35,11 @@ var CONSTANT = {
         return ENERGY_TO_SPAWN_CREEP;
     },
     
+    LOG_PERIOD: function() {
+        const LOG_PERIOD = 15;
+        return LOG_PERIOD;
+    },
+    
     NAME_CHARS: function() {
         const NAME_CHARS = '0123456789';
         return NAME_CHARS;
@@ -44,11 +49,7 @@ var CONSTANT = {
         const NAME_LENGTH = 5;
         return NAME_LENGTH;
     },
-    
-    LOG_PERIOD: function() {
-        const LOG_PERIOD = 50;
-        return LOG_PERIOD;
-    }
+
 };
 
 module.exports = CONSTANT;

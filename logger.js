@@ -7,10 +7,6 @@ var logger = {
             console.log(some_string);   
         }
     },
-    
-    empty_function: function() {
-        return;
-    }
 };
 
 module.exports = logger;

@@ -3,7 +3,7 @@ var CONSTANT = require('CONSTANT');
 var random = {
     
     get_random_item_from_array: function(some_array) {
-        
+        return
     },
     
     get_random_role_from_all_roles: function() {

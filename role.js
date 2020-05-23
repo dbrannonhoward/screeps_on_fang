@@ -3,7 +3,7 @@ var random = require('random');
 var role = {
 
     /** @param {Creep} creep **/
-    build: function(creep) {
+    builder: function(creep) {
 
         if(creep.memory.building && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.building = false;
