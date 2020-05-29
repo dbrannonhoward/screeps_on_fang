@@ -33,7 +33,7 @@ var spawner = {
     },
     
     spawn_creeps_random: function() {
-        if (query.get_energy_of_spawn_by_name('home') > CONSTANT.ENERGY_TO_SPAWN_CREEP() && query.get_count_of_all_creeps() < CONSTANT.CREEP_LIMIT()) {
+        if (query.get_energy_of_room_containing_spawn('home') > CONSTANT.ENERGY_TO_SPAWN_CREEP() && query.get_count_of_all_creeps() < CONSTANT.CREEP_LIMIT()) {
             var random_role = random.get_random_role_from_all_roles();
             logger.log_to_console('Spawning a random creep of role : ' + random_role);
             this.spawn_creep(CONSTANT.DEFAULT_SPAWN(), CONSTANT.DEFAULT_BODY(), {role: random_role});

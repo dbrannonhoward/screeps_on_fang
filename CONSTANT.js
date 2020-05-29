@@ -1,6 +1,7 @@
 var CONSTANT = {
     
     ALL_ROLES: function() {
+        //
         const ROLES = ['builder', 'harvester', 'upgrader'];
         return ROLES;
     },
@@ -36,7 +37,7 @@ var CONSTANT = {
     },
     
     LOG_PERIOD: function() {
-        const LOG_PERIOD = 100;
+        const LOG_PERIOD = 30;
         return LOG_PERIOD;
     },
     
